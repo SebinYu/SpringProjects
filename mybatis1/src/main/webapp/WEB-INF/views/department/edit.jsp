@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
       <table>
         <tr>
           <td>id</td>
-          <td><input type="text" value="${ department.id }" readonly disabled /></td>
+          <td><input type="text" value="${ department.id }"/></td>
         </tr>
         <tr>
           <td>학과명</td>
@@ -29,6 +30,9 @@
         </tr>
       </table>
       <button type="submit" class="btn">저장</button>
+      <c:if test="${ department.id > 0 }">
+        <a href="delete?id=${ department.id }" class="btn">삭제</a>
+      </c:if>
     </form>
  </div>
 </body>
