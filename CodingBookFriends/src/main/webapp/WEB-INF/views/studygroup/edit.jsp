@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<c:url var="R" value="/" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,7 +38,7 @@
           <td>스터디 리더 닉네임</td>
           <td><input type="text" name="leader" value="${ studygroup.leader }" /></td>
         </tr>
-                <tr>
+        <tr>
           <td>최대 모집인원</td>
           <td><input type="number" name="totalNum" value="${ studygroup.totalNum }" /></td>
         </tr>

@@ -12,7 +12,10 @@
 </head>
 <body>
 <div class="container">
-  <h1>코딩 런 프렌즈</h1>
+  <h1>${ studygroup.title }</h1>
+          <a href="edit?studyGroup_id=${ studygroup.studyGroup_id }">수정</a>
+          <a href="delete?studyGroup_id=${ studygroup.studyGroup_id }">삭제</a>
+  <hr><br>
   <a href="create" class="btn">학과등록</a>
   <table class="list">
     <thead>
@@ -30,7 +33,7 @@
       <c:forEach var="studygroup" items="${ studygroups }">
         <tr>
           <td>${ studygroup.studyGroup_id }</td>
-          <td><a href="detail?studyGroup_id=${ studygroup.studyGroup_id }">${ studygroup.title }</a></td>
+          <td><a href="edit?studyGroup_id=${ studygroup.studyGroup_id }">${ studygroup.title }</a></td>
           <td>${ studygroup.leader }</td>
           <td>${ studygroup.currentNum }/${ studygroup.totalNum }</td>
           <td><a href="edit?studyGroup_id=${ studygroup.studyGroup_id }">수정</a></td>

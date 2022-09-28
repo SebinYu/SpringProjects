@@ -6,6 +6,7 @@ public class Studygroup {
     BigInteger studyGroup_id;
     String title;
     String contents;
+    int learningMaterial_id;
     String leader;
     int totalNum;
     int currentNum;
@@ -34,6 +35,13 @@ public class Studygroup {
 	}
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+
+	public int getLearningMaterial_id() {
+		return learningMaterial_id;
+	}
+	public void setLearningMaterial_id(int learningMaterial_id) {
+		this.learningMaterial_id = learningMaterial_id;
 	}
 	public String getLeader() {
 		return leader;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.skhu.dto.Studygroup;
+import net.skhu.mapper.LearningMaterialMapper;
 import net.skhu.mapper.StudygroupMapper;
 
 @Controller
@@ -19,6 +20,7 @@ import net.skhu.mapper.StudygroupMapper;
 public class StudygroupController {
 
     @Autowired StudygroupMapper studygroupMapper;
+    @Autowired LearningMaterialMapper learningMaterialMapper;
 
     @RequestMapping("list")
     public String list(Model model) {
@@ -40,17 +42,32 @@ public class StudygroupController {
     }
 
     @GetMapping("edit")
-    public String edit(Model model, @RequestParam(value ="studyGroup_id", required=false) BigInteger studyGroup_id) {
+    public String edit(Model model,
+    		@RequestParam(value ="studyGroup_id", required=false) BigInteger studyGroup_id) {
     	Studygroup studygroup = studygroupMapper.findOne(studyGroup_id);
         model.addAttribute("studygroup", studygroup);
+        model.addAttribute("learningMaterials", learningMaterialMapper.findAll());
         return "studygroup/edit";
     }
 
     @PostMapping("edit")
     public String edit(Model model, Studygroup studygroup) {
     	studygroupMapper.update(studygroup);
+    	model.addAttribute("message", "저장했습니다.");
+        model.addAttribute("learningMaterials", learningMaterialMapper.findAll());
         return "redirect:list";
     }
+
+    @GetMapping("detail")
+    public String detail(Model model,@RequestParam(value ="studyGroup_id", required=false) BigInteger studyGroup_id) {
+        List<Studygroup> studygroups = studygroupMapper.findAll();
+        model.addAttribute("studygroups", studygroups);
+    	Studygroup studygroup = studygroupMapper.findOne(studyGroup_id);
+        model.addAttribute("studygroup", studygroup);
+        model.addAttribute("learningMaterials", learningMaterialMapper.findAll());
+        return "studygroup/detail";
+    }
+
 
     @RequestMapping("delete")
     public String delete(Model model, @RequestParam(value ="studyGroup_id", required=false) BigInteger studyGroup_id) {
