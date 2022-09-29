@@ -1,0 +1,120 @@
+/* ANCHOR 기본설정 */
+/* REVIEW  * -> box-sizing: border-box; */
+* {
+    box-sizing: border-box;
+}
+
+body{
+    margin:0px;
+}
+
+input {
+	float:right;
+}
+
+a:hover {
+    text-decoration: none;
+  }
+
+.black {
+    background: black;
+    color:white;
+}
+
+/* ANCHOR 로그인창 css + ONE-WAY 애니매이션 */
+/* REVIEW ONE-WAY 애니매이션 만드는 3가지 */
+.black-bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(63, 63, 63, 0.486);
+    position: fixed;
+    z-index: 5;
+    /* 1. display:none 대용 */
+    visibility: hidden;    
+    /* 투명도 0_즉 완전 투명 */
+    opacity: 0;
+    /* 3.애니메이션 기능 */
+    transition: all 1s;
+
+    text-align: center;
+
+}
+
+
+
+.white-bg {
+    margin-top: 200px;
+    padding-top: 20px;
+    border-radius: 10px;
+    padding:35px;
+    width: 60%;
+
+    /* REVIEW div박스 가운데 정렬 3가지 */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: rgb(255, 255, 255);
+}
+
+
+
+.list-group {
+    display: none;
+    width: 100%;
+    height: 40%;
+    text-align: center;
+
+}
+
+/* REVIEW 모달창 만들때 주의사항 */
+/* 주의 모달창 만들시 show, show-modal 2가지 클래스 제작 필요
+    show만 쓰면 겹쳐서 나오기때문에 여러가지 기능중 1개만나오는 오류를 피하자
+*/
+.show-modal {
+    /* REVIEW ONE-WAY 애니매이션 만드는 2번째 요소 */
+    visibility: visible;
+    opacity: 1;
+    /* show클래스하고 visibility를 같이 묶어사용하면->one-way 애니메이션 완성! */
+}
+
+
+
+.m-photo {
+    width: 100%;
+    height: 400px;
+}
+
+.main__background {
+    width: 100%;
+    height: 300px;
+    /* REVIEW 배경 이미지용 background 설정 3가지 */
+    /* linear-gradient 이미지 검은색 + 투명도 0.3 */
+    background-image: linear-gradient( rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) ), url(../images/veepPoster.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* filter: brightness(60%) saturate(200%); */
+    /* REVIEW margin collapse effect을 막기 위해 추가*/
+    padding: 1px;
+    margin-bottom: 10px;
+    text-align: center;
+    clear: both;
+}
+
+.center {
+    text-align: center;
+}
+
+.margin {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.show {
+    display: block;
+}
+
+
+.warning1, .warning2 {
+    display: none;
+}

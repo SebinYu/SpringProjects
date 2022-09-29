@@ -3,6 +3,9 @@ package net.skhu.controller;
 import java.math.BigInteger;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +26,7 @@ public class StudygroupController {
     @Autowired LearningMaterialMapper learningMaterialMapper;
 
     @RequestMapping("list")
-    public String list(Model model) {
+    public String list(Model model,HttpSession session, HttpServletRequest request)throws Exception {
         List<Studygroup> studygroups = studygroupMapper.findAll();
         model.addAttribute("studygroups", studygroups);
         return "studygroup/list";
@@ -46,7 +49,6 @@ public class StudygroupController {
     		@RequestParam(value ="studyGroup_id", required=false) BigInteger studyGroup_id) {
     	Studygroup studygroup = studygroupMapper.findOne(studyGroup_id);
         model.addAttribute("studygroup", studygroup);
-        model.addAttribute("learningMaterials", learningMaterialMapper.findAll());
         return "studygroup/edit";
     }
 
@@ -54,7 +56,6 @@ public class StudygroupController {
     public String edit(Model model, Studygroup studygroup) {
     	studygroupMapper.update(studygroup);
     	model.addAttribute("message", "저장했습니다.");
-        model.addAttribute("learningMaterials", learningMaterialMapper.findAll());
         return "redirect:list";
     }
 
@@ -74,4 +75,7 @@ public class StudygroupController {
     	studygroupMapper.delete(studyGroup_id);
         return "redirect:list";
     }
+
+
+
 }

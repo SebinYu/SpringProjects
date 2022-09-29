@@ -1,6 +1,7 @@
 package net.skhu.dto;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 
 public class Studygroup {
     BigInteger studyGroup_id;
@@ -10,6 +11,7 @@ public class Studygroup {
     String leader;
     int totalNum;
     int currentNum;
+    private Timestamp regDate;
 
 
 	public int getCurrentNum() {
@@ -55,7 +57,13 @@ public class Studygroup {
 	public void setTotalNum(int totalNum) {
 		this.totalNum = totalNum;
 	}
+	public Timestamp getRegDate() {
+		return regDate;
+	}
+	public void setRegDate(Timestamp regDate) {
+		this.regDate = regDate;
+	}
 
-
-
+	
+	
 }
